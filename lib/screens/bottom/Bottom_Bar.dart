@@ -1,5 +1,3 @@
-import 'dart:svg';
-
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/widgets/circular_icon/circular_icon_widget.dart';
 

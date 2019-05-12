@@ -3,10 +3,11 @@ import 'package:flutterando_web/screens/about/AboutPage.dart';
 import 'package:flutterando_web/screens/contact/ContactPage.dart';
 import 'package:flutterando_web/screens/home/HomePage.dart';
 import 'package:flutterando_web/shared/widgets/gradient_appbar/Gradient_AppBar.dart';
-import 'package:flutterando_web/shared/widgets/link_button/Link_Button.dart';
 import 'package:flutterando_web/screens/team/TeamPage.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
+
+import 'bottom/Bottom_Bar.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
@@ -22,7 +23,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    _tabController = new TabController(initialIndex: 0, length: 4, vsync: this);
+    _tabController = new TabController(initialIndex: 0, length: tabs.length, vsync: this);
     super.initState();
   }
 
@@ -37,6 +38,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     TabModel(title: "Sobre", contentBuilder: (context) => AboutPage()),
     TabModel(title: "Equipe", contentBuilder: (context) => TeamPage()),
     TabModel(title: "Contato", contentBuilder: (context) => ContactPage()),
+    TabModel(title: "Bottom Bar", contentBuilder: (context) => BottomBar()),
   ];
 
   @override
@@ -47,11 +49,10 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
         appBar: GradientAppBar(
           image: 'images/logo.png',
           buttons: TabBar(
+            isScrollable: true,
             indicatorColor: Colors.white,
             controller: _tabController,
-            tabs: tabs.map((tab) {
-              return Tab(text: tab.title);
-            }).toList(),
+            tabs: tabs.map((tab) => Tab(text: tab.title)).toList(),
           ),
         ),
         body: Center(

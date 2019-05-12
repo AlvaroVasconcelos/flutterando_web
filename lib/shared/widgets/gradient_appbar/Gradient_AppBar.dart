@@ -29,10 +29,12 @@ class _GradientAppBarState extends State<GradientAppBar> {
           right: width * 0.60,
           child: Image.asset(widget.image),
         ),
-        Positioned.fill(
-          left: width * .6,
+        Positioned(
           right: width * .05,
-          child: widget.buttons,
+          child: Container(
+            width: 400,
+            height: 56,
+            child: widget.buttons),
         )
       ],
     );
