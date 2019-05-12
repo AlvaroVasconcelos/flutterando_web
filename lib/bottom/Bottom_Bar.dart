@@ -1,6 +1,7 @@
 import 'dart:svg';
 
 import 'package:flutter_web/material.dart';
+import 'package:flutterando_web/shared/widget/circular_icon/circular_icon_widget.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar({Key key}) : super(key: key);
@@ -11,8 +12,7 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+    var size = MediaQuery.of(context).size;
     return Container(
       color: Colors.black12,
       child: Column(
@@ -27,54 +27,22 @@ class _BottomBarState extends State<BottomBar> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Spacer(),
-              ClipOval(
-                child: Container(
-                  child: Image.asset(
-                    'icons/facebook-icon.png',
-                    fit: BoxFit.contain,
-                  ),
-                  color: Colors.white,
-                  height: height * 0.05,
-                  width: width * 0.03,
-                ),
+              CircularIconWidget(
+                assetImage: 'icons/facebook-icon.png',
               ),
               SizedBox(width: 20),
-              ClipOval(
-                child: Container(
-                  child: Image.asset(
-                    'icons/linkedin-icon.png',
-                    fit: BoxFit.contain,
-                  ),
-                  color: Colors.white,
-                  height: height * 0.05,
-                  width: width * 0.03,
-                ),
+              CircularIconWidget(
+                assetImage: 'icons/medium-icon.png',
               ),
               SizedBox(width: 20),
-              ClipOval(
-                child: Container(
-                  child: Image.asset(
-                    'icons/medium-icon.png',
-                    fit: BoxFit.contain,
-                  ),
-                  color: Colors.white,
-                  height: height * 0.05,
-                  width: width * 0.03,
-                ),
+              CircularIconWidget(
+                assetImage: 'icons/youtube-icon.png',
               ),
               SizedBox(width: 20),
-              ClipOval(
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage('icons/youtube-icon.png'),
-                    ),
-                  ),
-                  height: height * 0.05,
-                  width: width * 0.03,
-                ),
+              CircularIconWidget(
+                assetImage: 'icons/linkedin-icon.png',
               ),
+              SizedBox(width: 20),
               Spacer(),
             ],
           ),
