@@ -1,6 +1,6 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
-import 'package:flutterando_web/home/HomePage.dart';
+import 'package:flutterando_web/StartPage.dart';
 
 void main() => runApp(App());
 
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(title: 'Flutter Demo Home Page'),
+      home: StartPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
