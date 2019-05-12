@@ -2,9 +2,11 @@ import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/screens/about/AboutPage.dart';
 import 'package:flutterando_web/screens/contact/ContactPage.dart';
 import 'package:flutterando_web/screens/home/HomePage.dart';
-import 'package:flutterando_web/shared/widgets/Gradient_AppBar.dart';
-import 'package:flutterando_web/shared/widgets/Link_Button.dart';
+import 'package:flutterando_web/shared/widgets/gradient_appbar/Gradient_AppBar.dart';
+import 'package:flutterando_web/shared/widgets/link_button/Link_Button.dart';
 import 'package:flutterando_web/screens/team/TeamPage.dart';
+import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
+import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
@@ -15,67 +17,56 @@ class StartPage extends StatefulWidget {
   _StartPageState createState() => _StartPageState();
 }
 
-class _StartPageState extends State<StartPage> {
-  PageController _pageController;
+class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
+  TabController _tabController;
 
   @override
   void initState() {
-    _pageController = new PageController(initialPage: 0);
+    _tabController = new TabController(initialIndex: 0, length: 4, vsync: this);
     super.initState();
   }
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
+  List<TabModel> tabs = [
+    TabModel(title: "Home", contentBuilder: (context) => HomePage()),
+    TabModel(title: "Sobre", contentBuilder: (context) => AboutPage()),
+    TabModel(title: "Equipe", contentBuilder: (context) => TeamPage()),
+    TabModel(title: "Contato", contentBuilder: (context) => ContactPage()),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: GradientAppBar(
-        image: 'images/logo.png',
-        buttons: [
-          LinkButton(
-            label: 'Home',
-            onTap: () => _pageController.animateToPage(0,
-                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
+    return DefaultTabController(
+      length: tabs.length,
+      child: Scaffold(
+        appBar: GradientAppBar(
+          image: 'images/logo.png',
+          buttons: TabBar(
+            indicatorColor: Colors.white,
+            controller: _tabController,
+            tabs: tabs.map((tab) {
+              return Tab(text: tab.title);
+            }).toList(),
           ),
-          LinkButton(
-            label: 'Sobre',
-            onTap: () => _pageController.animateToPage(1,
-                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
-          ),
-          LinkButton(
-            label: 'Equipe',
-            onTap: () => _pageController.animateToPage(2,
-                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
-          ),
-          LinkButton(
-            label: 'Contato',
-            onTap: () => _pageController.animateToPage(3,
-                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
-          ),
-          Spacer()
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: PageView(
-                scrollDirection: Axis.vertical,
-                controller: _pageController,
-                children: <Widget>[
-                  HomePage(),
-                  AboutPage(),
-                  TeamPage(),
-                  ContactPage(),
-                ],
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: VerticalTabBarView(
+                  controller: _tabController,
+                  children:
+                      tabs.map((tab) => tab.contentBuilder(context)).toList(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
