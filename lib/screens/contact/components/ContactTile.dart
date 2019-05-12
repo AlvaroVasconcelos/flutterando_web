@@ -15,7 +15,7 @@ class ContactTile extends StatelessWidget {
       height: 35,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[icon, text],
+        children: <Widget>[icon, Flexible(child: text)],
       ),
     );
   }

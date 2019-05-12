@@ -1,7 +1,9 @@
-import 'package:flutterando_web/contact/FieldValidators.dart';
+import 'FieldValidators.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ContactBloc with FieldValidators {
+
+  
   final _nameController = new BehaviorSubject<String>();
   Observable<String> get nameFlux =>
       _nameController.stream.transform(nameValidator);
@@ -26,6 +28,8 @@ class ContactBloc with FieldValidators {
   Observable<String> get messageFlux =>
       _messageController.stream.transform(messageValidator);
   Sink<String> get messageEvent => _messageController.sink;
+
+  ContactBloc();
 
 /// envia todos os dados do formulário
   void submit() {

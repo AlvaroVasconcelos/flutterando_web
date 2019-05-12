@@ -1,5 +1,5 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/contact/components/ContactTile.dart';
+import 'ContactTile.dart';
 
 import 'Contact_TextTile.dart';
 
@@ -21,15 +21,19 @@ class _ContactContainerState extends State<ContactContainer> {
           ContactTextTile(
             title: Text(
               "Contact with us",
-              style: TextStyle(
-                  fontSize: size.width * 0.018, fontWeight: FontWeight.bold),
+              style: Theme.of(context)
+                  .textTheme
+                  .title
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
               "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
               "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
               "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa",
-              style:
-                  TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
+              style: Theme.of(context)
+                  .textTheme
+                  .body1
+                  .copyWith(color: Colors.grey),
             ),
           ),
           ContactTextTile(
@@ -54,6 +58,7 @@ class _ContactContainerState extends State<ContactContainer> {
             icon: Icon(Icons.phone),
             text: Text(
               "Phone: +61 2 8376 6284",
+              softWrap: true,
               style:
                   TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
             ),
@@ -62,6 +67,7 @@ class _ContactContainerState extends State<ContactContainer> {
             icon: Icon(Icons.email),
             text: Text(
               "Email: hello@yourdomain.com",
+              softWrap: true,
               style:
                   TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
             ),

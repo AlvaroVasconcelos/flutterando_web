@@ -4,7 +4,7 @@ class ContactField extends StatelessWidget {
   final String hint;
   final TextStyle hintStyle;
   final double height;
-  final Function onSaved;
+  final Function(String value) onSaved;
   final bool verticalCenter;
 
   const ContactField(

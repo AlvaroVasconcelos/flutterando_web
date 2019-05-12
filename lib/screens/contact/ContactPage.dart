@@ -1,8 +1,6 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/contact/ContactBloc.dart';
-import 'package:flutterando_web/contact/components/Contact_Container.dart';
-import 'package:flutterando_web/contact/components/Contat_Form.dart';
-import 'package:flutterando_web/shared/widget/contact_field/Contact_Field.dart';
+import 'components/Contact_Container.dart';
+import 'components/Contat_Form.dart';
 
 class ContactPage extends StatefulWidget {
   ContactPage({Key key}) : super(key: key);
@@ -11,20 +9,7 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-  ContactBloc _contactBloc;
-
-  @override
-  void initState() {
-    _contactBloc = new ContactBloc();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _contactBloc.dispose();
-    super.dispose();
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -35,7 +20,9 @@ class _ContactPageState extends State<ContactPage> {
         children: <Widget>[
           Spacer(flex: 1),
           Expanded(flex: 3, child: ContactContainer()),
-          Spacer(flex:1,),
+          Spacer(
+            flex: 1,
+          ),
           Expanded(flex: 6, child: ContactForm()),
           Spacer(flex: 1),
         ],
