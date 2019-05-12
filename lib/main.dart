@@ -1,5 +1,8 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/shared/widget/Gradient_AppBar.dart';
+import 'package:flutter_web/widgets.dart';
+
+import 'shared/widget/Gradient_AppBar.dart';
+import 'shared/widget/Link_Button.dart';
 
 void main() => runApp(App());
 
@@ -24,7 +27,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(),
+      appBar: GradientAppBar(
+        image: 'images/logo.png',
+        buttons: [
+          LinkButton(
+            label: 'Home',
+            onTap: () {},
+          ),
+          LinkButton(
+            label: 'Sobre',
+            onTap: () {},
+          ),
+          LinkButton(
+            label: 'Equipe',
+            onTap: () {},
+          ),
+          LinkButton(
+            label: 'Contato',
+            onTap: () {},
+          ),
+          Spacer()
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
