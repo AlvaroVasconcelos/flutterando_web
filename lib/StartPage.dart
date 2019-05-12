@@ -6,6 +6,8 @@ import 'package:flutterando_web/shared/widget/Gradient_AppBar.dart';
 import 'package:flutterando_web/shared/widget/Link_Button.dart';
 import 'package:flutterando_web/team/TeamPage.dart';
 
+import 'bottom/Bottom_Bar.dart';
+
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
 
@@ -72,6 +74,7 @@ class _StartPageState extends State<StartPage> {
                   AboutPage(),
                   TeamPage(),
                   ContactPage(),
+                  BottomBar()
                 ],
               ),
             ),
