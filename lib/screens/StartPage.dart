@@ -62,6 +62,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
               Expanded(
                 child: VerticalTabBarView(
                   controller: _tabController,
+                  physics: ScrollPhysics(),
                   children:
                       tabs.map((tab) => tab.contentBuilder(context)).toList(),
                 ),

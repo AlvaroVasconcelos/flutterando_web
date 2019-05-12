@@ -166,9 +166,10 @@ class _VerticalTabBarViewState extends State<VerticalTabBarView> {
         scrollDirection: Axis.vertical,
         dragStartBehavior: widget.dragStartBehavior,
         controller: _pageController,
+        pageSnapping: false,
         physics: widget.physics == null
             ? _kTabBarViewPhysics
-            : _kTabBarViewPhysics.applyTo(widget.physics),
+            : widget.physics,
         children: _children,
       ),
     );
