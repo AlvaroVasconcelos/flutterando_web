@@ -1,10 +1,10 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/about/AboutPage.dart';
-import 'package:flutterando_web/contact/ContactPage.dart';
-import 'package:flutterando_web/home/HomePage.dart';
-import 'package:flutterando_web/shared/widget/Gradient_AppBar.dart';
-import 'package:flutterando_web/shared/widget/Link_Button.dart';
-import 'package:flutterando_web/team/TeamPage.dart';
+import 'package:flutterando_web/screens/about/AboutPage.dart';
+import 'package:flutterando_web/screens/contact/ContactPage.dart';
+import 'package:flutterando_web/screens/home/HomePage.dart';
+import 'package:flutterando_web/shared/widgets/Gradient_AppBar.dart';
+import 'package:flutterando_web/shared/widgets/Link_Button.dart';
+import 'package:flutterando_web/screens/team/TeamPage.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
