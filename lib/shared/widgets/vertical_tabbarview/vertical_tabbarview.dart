@@ -4,18 +4,18 @@ import 'package:flutter_web/material.dart';
 class VerticalTabBarView extends StatefulWidget {
   /// Creates a page view with one child per tab.
   ///
-  /// The length of [children] must be the same as the [controller]'s length.
+  /// The length of [children] must be the same as the [tabController]'s length.
   const VerticalTabBarView({
     Key key,
     @required this.children,
-    this.controller,
+    this.tabController,
     this.physics,
     this.dragStartBehavior = DragStartBehavior.down,
   })  : assert(children != null),
         assert(dragStartBehavior != null),
         super(key: key);
 
-  final TabController controller;
+  final TabController tabController;
   final List<Widget> children;
 
   final ScrollPhysics physics;
@@ -37,7 +37,7 @@ class _VerticalTabBarViewState extends State<VerticalTabBarView> {
 
   void _updateTabController() {
     final TabController newController =
-        widget.controller ?? DefaultTabController.of(context);
+        widget.tabController ?? DefaultTabController.of(context);
     assert(() {
       if (newController == null) {
         throw FlutterError('No TabController for ${widget.runtimeType}.\n'
@@ -74,7 +74,7 @@ class _VerticalTabBarViewState extends State<VerticalTabBarView> {
   @override
   void didUpdateWidget(VerticalTabBarView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.controller != oldWidget.controller) _updateTabController();
+    if (widget.tabController != oldWidget.tabController) _updateTabController();
     if (widget.children != oldWidget.children && _warpUnderwayCount == 0)
       _children = widget.children;
   }
@@ -100,13 +100,15 @@ class _VerticalTabBarViewState extends State<VerticalTabBarView> {
   Future<void> _warpToCurrentIndex() async {
     if (!mounted) return Future<void>.value();
 
-    if (_pageController.page == _currentIndex.toDouble())
+    if (_pageController.page == _currentIndex.toDouble()) {
       return Future<void>.value();
+    }
 
     final int previousIndex = _controller.previousIndex;
-    if ((_currentIndex - previousIndex).abs() == 1)
+    if ((_currentIndex - previousIndex).abs() == 1) {
       return _pageController.animateToPage(_currentIndex,
           duration: kTabScrollDuration, curve: Curves.ease);
+    }
 
     assert((_currentIndex - previousIndex).abs() > 1);
     int initialPage;
@@ -167,9 +169,7 @@ class _VerticalTabBarViewState extends State<VerticalTabBarView> {
         dragStartBehavior: widget.dragStartBehavior,
         controller: _pageController,
         pageSnapping: false,
-        physics: widget.physics == null
-            ? _kTabBarViewPhysics
-            : widget.physics,
+        physics: widget.physics ?? _kTabBarViewPhysics,
         children: _children,
       ),
     );
