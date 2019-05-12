@@ -65,6 +65,7 @@ class _StartPageState extends State<StartPage> {
           children: <Widget>[
             Expanded(
               child: PageView(
+                scrollDirection: Axis.vertical,
                 controller: _pageController,
                 children: <Widget>[
                   HomePage(),
