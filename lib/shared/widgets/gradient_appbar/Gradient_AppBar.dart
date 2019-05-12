@@ -2,7 +2,7 @@ import 'package:flutter_web/material.dart';
 
 class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String image;
-  final List<Widget> buttons;
+  final TabBar buttons;
   GradientAppBar({Key key, this.image, this.buttons}) : super(key: key);
   _GradientAppBarState createState() => _GradientAppBarState();
 
@@ -29,12 +29,12 @@ class _GradientAppBarState extends State<GradientAppBar> {
           right: width * 0.60,
           child: Image.asset(widget.image),
         ),
-        Positioned.fill(
-          left: width * 0.60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: widget.buttons,
-          ),
+        Positioned(
+          right: width * .05,
+          child: Container(
+            width: 400,
+            height: 56,
+            child: widget.buttons),
         )
       ],
     );
