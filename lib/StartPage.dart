@@ -39,22 +39,22 @@ class _StartPageState extends State<StartPage> {
           LinkButton(
             label: 'Home',
             onTap: () => _pageController.animateToPage(0,
-                curve: Curves.easeIn, duration: Duration(milliseconds: 300)),
+                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
           ),
           LinkButton(
             label: 'Sobre',
             onTap: () => _pageController.animateToPage(1,
-                curve: Curves.easeIn, duration: Duration(milliseconds: 300)),
+                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
           ),
           LinkButton(
             label: 'Equipe',
             onTap: () => _pageController.animateToPage(2,
-                curve: Curves.easeIn, duration: Duration(milliseconds: 300)),
+                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
           ),
           LinkButton(
             label: 'Contato',
             onTap: () => _pageController.animateToPage(3,
-                curve: Curves.easeIn, duration: Duration(milliseconds: 300)),
+                curve: Curves.easeInOut, duration: Duration(milliseconds: 300)),
           ),
           Spacer()
         ],
