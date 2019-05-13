@@ -1,7 +1,6 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/screens/contact/widget/team.dart';
-import 'package:flutterando_web/screens/contact/widget/titulo.dart';
 import 'package:flutterando_web/shared/model/team.dart';
+import 'package:flutterando_web/shared/widgets/team_card/team_card.dart';
 
 class TeamPage extends StatefulWidget {
   TeamPage({Key key}) : super(key: key);
@@ -10,93 +9,130 @@ class TeamPage extends StatefulWidget {
 }
 
 class _TeamPageState extends State<TeamPage> {
-  List<TeamModel> team = List<TeamModel>();
-
-  void _getTeam() {
-    team.add(TeamModel.fromMap({
-      'nome': 'Matheus Perez',
+  List<TeamModel> team = [
+    TeamModel.fromMap({
+      'nome': 'Matheus Longo Perez',
       'foto': 'images/team/matheus.jpg',
-      'cargo': 'progamador',
-      'descricao': 'dsa dsadsa'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Backend',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'Gabriel Sávio',
       'foto': 'images/team/gabriel.jpg',
-      'cargo': 'progamador 2',
-      'descricao': 'aaaaaaa'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Animador',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'Alvaro Vasconcelos',
       'foto': 'images/team/alvaro.jpg',
-      'cargo': 'progamador 3',
-      'descricao': 'eeeeeeeee'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Full Stack',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'Rully Alves',
       'foto': 'images/team/rully.jpg',
-      'cargo': 'progamador 4',
-      'descricao': 'iiiiiiiiiiii'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Backend',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'Vilson Dauinheimer',
       'foto': 'images/team/bwolf.jpg',
-      'cargo': 'progamador 4',
-      'descricao': 'oooooooooo'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Full Stack',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'David Araujo',
       'foto': 'images/team/david.jpg',
-      'cargo': 'progamador 4',
-      'descricao': 'uuuuuuuuuuuuu'
-    }));
-    team.add(TeamModel.fromMap({
+      'cargo': 'Progamador Animador',
+      'descricao': 'Coloque uma descrição aqui'
+    }),
+    TeamModel.fromMap({
       'nome': 'Jacob Moura',
       'foto': 'images/team/jacob_.jpg',
-      'cargo': 'progamador 4',
-      'descricao': 'ddddd'
-    }));
+      'cargo': 'Hittler de Manaus',
+      'descricao': 'Coloque uma descrição aqui'
+    })
+  ];
+  var size;
+
+  _initBuild() {
     team.shuffle();
+    size = MediaQuery.of(context).size;
   }
 
   @override
   Widget build(BuildContext context) {
-    _getTeam();
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset('images/bg-time.png'),
-          ),
-          Container(
-            //color: Color.fromRGBO(248, 248, 250, 1),
+    _initBuild();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Expanded(
+          flex: 3,
+          child: Container(
+            color: Color.fromRGBO(255, 255, 255, 1),
             padding: EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                TituloWidget(texto: "Nosso Time"),
-                SizedBox(height: 50,),  
+                Text(
+                  'Nosso Time',
+                  style: TextStyle(
+                      fontSize: (size.width * .05), color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 3,),
+                Text(
+                  'Uma breve descrição desse projetos de progamadores aqui :D',
+                  style: TextStyle(
+                      fontSize: (size.width * .012), color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 10,),
                 Wrap(
-                    alignment: WrapAlignment.center,
-                    direction: Axis.horizontal,
-                    spacing: 50,
-                    runSpacing: 50,
-                    children: <Widget>[
-                        TeamWidget(team: team[0]),
-                        TeamWidget(team: team[1]),
-                        TeamWidget(team: team[2]),
-                        TeamWidget(team: team[3]),
-                        TeamWidget(team: team[4]),
-                        TeamWidget(team: team[5]),
-                        TeamWidget(team: team[6]),
-                    ],
-                  ),
+                  alignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  spacing: 50,
+                  runSpacing: 50,
+                  children: <Widget>[
+                    TeamCard(team: team[0], size: size),
+                    TeamCard(team: team[1], size: size),
+                    TeamCard(team: team[2], size: size),
+                    TeamCard(team: team[3], size: size),
+                    TeamCard(team: team[4], size: size),
+                    TeamCard(team: team[5], size: size),
+                    TeamCard(team: team[6], size: size),
+                  ],
+                ),
               ],
             ),
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            width: 100,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                alignment: Alignment.bottomCenter,
+                image: AssetImage('images/shap-r.png'),
+              ),
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromRGBO(95, 95, 95, 1),
+                  Color.fromRGBO(0, 85, 155, 1),
+                  Color.fromRGBO(85, 200, 245, 1),
+                ],
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

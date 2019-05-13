@@ -1,6 +1,4 @@
 import 'package:flutter_web/material.dart';
-import 'widget/team.dart';
-
 
 class ContactPage extends StatefulWidget {
   ContactPage({Key key}) : super(key: key);
