@@ -10,9 +10,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutterando',
       theme: ThemeData(
+        fontFamily: 'Arial',
         primarySwatch: Colors.blue,
       ),
-      home: StartPage(title: 'Flutter Demo Home Page'),
+      home: StartPage(),
     );
   }
 }

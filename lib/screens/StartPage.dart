@@ -1,19 +1,15 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/screens/about/AboutPage.dart';
-import 'package:flutterando_web/screens/contact/ContactPage.dart';
+import 'package:flutterando_web/screens/contact/contact_page.dart';
 import 'package:flutterando_web/screens/home/HomePage.dart';
 import 'package:flutterando_web/shared/widgets/gradient_appbar/Gradient_AppBar.dart';
-import 'package:flutterando_web/screens/team/TeamPage.dart';
+import 'package:flutterando_web/screens/team/team_page.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
 
 import 'bottom/Bottom_Bar.dart';
 
 class StartPage extends StatefulWidget {
-  StartPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _StartPageState createState() => _StartPageState();
 }
