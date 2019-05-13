@@ -14,33 +14,39 @@ class _AboutPageState extends State<AboutPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text('Title'),
-          Text('SubTitle'),
+          Text(
+            'Title',
+            style: Theme.of(context).textTheme.title,
+          ),
+          Text(
+            'SubTitle',
+            style: Theme.of(context).textTheme.overline,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Spacer(),
+              Spacer(flex: 2),
               AboutCard(
-                title: '',
-                subTitle: '',
+                title: 'Testando Title',
+                subTitle:
+                    'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
                 image: 'icons/users.png',
               ),
+              Spacer(flex: 1),
               AboutCard(
-                title: '',
-                subTitle: '',
+                title: 'Testando Title',
+                subTitle:
+                    'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
                 image: 'icons/users.png',
               ),
+              Spacer(flex: 1),
               AboutCard(
-                title: '',
-                subTitle: '',
+                title: 'Testando Title',
+                subTitle:
+                    'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
                 image: 'icons/users.png',
               ),
-              AboutCard(
-                title: '',
-                subTitle: '',
-                image: 'icons/users.png',
-              ),
-              Spacer(),
+              Spacer(flex: 2),
             ],
           )
         ],
