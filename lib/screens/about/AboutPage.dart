@@ -1,3 +1,4 @@
+import 'package:flutter_web/cupertino.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/widgets/about_card/about_card.dart';
 
@@ -10,17 +11,35 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          alignment: Alignment.bottomCenter,
+          image: AssetImage('images/shap.png'),
+        ),
+        gradient: LinearGradient(colors: [
+          Color.fromRGBO(95, 95, 95, 1),
+          Color.fromRGBO(0, 85, 155, 1),
+          Color.fromRGBO(85, 200, 245, 1),
+        ]),
+      ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Text(
             'Title',
-            style: Theme.of(context).textTheme.title,
+            style: TextStyle(color: Colors.white, fontSize: size.width * .05),
           ),
-          Text(
-            'SubTitle',
-            style: Theme.of(context).textTheme.overline,
+          Container(
+            width: size.width * .3,
+            child: Text(
+              '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: size.width * .01,
+              ),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

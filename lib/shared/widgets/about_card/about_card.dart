@@ -18,7 +18,7 @@ class AboutCard extends StatelessWidget {
     return Expanded(
       flex: 5,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(65),
+        borderRadius: BorderRadius.circular(62),
         child: Card(
             child: Container(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
