@@ -64,8 +64,10 @@ class _TeamPageState extends State<TeamPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Image.asset('images/bg-time.png'),
-
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset('images/bg-time.png'),
+          ),
           Container(
             //color: Color.fromRGBO(248, 248, 250, 1),
             padding: EdgeInsets.all(10),
