@@ -1,7 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/widgets/contact_field/Contact_Field.dart';
 
-import '../ContactBloc.dart';
+import '../contact_bloc.dart';
 
 class ContactForm extends StatefulWidget {
   ContactForm({Key key}) : super(key: key);

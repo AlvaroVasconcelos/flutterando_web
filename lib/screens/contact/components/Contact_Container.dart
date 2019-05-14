@@ -1,7 +1,7 @@
 import 'package:flutter_web/material.dart';
-import 'ContactTile.dart';
+import 'contact_tile.dart';
 
-import 'Contact_TextTile.dart';
+import 'contact_text_tile.dart';
 
 class ContactContainer extends StatefulWidget {
   ContactContainer({Key key}) : super(key: key);
