@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
 import 'components/Contact_Container.dart';
 import 'components/Contat_Form.dart';
@@ -9,7 +10,6 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -19,11 +19,23 @@ class _ContactPageState extends State<ContactPage> {
       child: Row(
         children: <Widget>[
           Spacer(flex: 1),
-          Expanded(flex: 3, child: ContactContainer()),
-          Spacer(
-            flex: 1,
+          Expanded(
+            flex: 3,
+            child: AnimatedCard(
+              direction: AnimatedCardDirection.left,
+              initDelay: Duration(seconds: 0),
+              child: ContactContainer(),
+            ),
           ),
-          Expanded(flex: 6, child: ContactForm()),
+          Spacer(flex: 1),
+          Expanded(
+            flex: 6,
+            child: AnimatedCard(
+              direction: AnimatedCardDirection.right,
+              initDelay: Duration(seconds: 0),
+              child: ContactForm(),
+            ),
+          ),
           Spacer(flex: 1),
         ],
       ),

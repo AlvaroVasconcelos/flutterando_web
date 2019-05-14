@@ -78,15 +78,19 @@ class _CustomScrollbarWidgetState extends State<CustomScrollbarWidget>
       GestureDetector(
         // onVerticalDragUpdate: _onVerticalDragUpdate,
         child: AnimatedBuilder(
-            animation: widget.controller.animation,
-            child: ScrollThumb(height: widget.heightScrollThumb, customText : widget.customText),
-            builder: (context, child) {
-              return Container(
-                alignment: Alignment.topRight,
-                margin: EdgeInsets.only(top: dragPos),
-                child: child,
-              );
-            }),
+          animation: widget.controller.animation,
+          child: ScrollThumb(
+            height: widget.heightScrollThumb,
+            customText: widget.customText,
+          ),
+          builder: (context, child) {
+            return Container(
+              alignment: Alignment.topRight,
+              margin: EdgeInsets.only(top: dragPos),
+              child: child,
+            );
+          },
+        ),
       ),
     ]);
   }
