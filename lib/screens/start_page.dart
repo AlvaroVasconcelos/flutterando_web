@@ -8,7 +8,7 @@ import 'package:flutterando_web/screens/team/team_page.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
 
-import 'bottom/Bottom_Bar.dart';
+import 'bottom/bottom_bar.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
