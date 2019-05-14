@@ -3,7 +3,7 @@ import 'package:flutterando_web/screens/about/about_page.dart';
 import 'package:flutterando_web/screens/contact/contact_page.dart';
 import 'package:flutterando_web/screens/home/home_page.dart';
 import 'package:flutterando_web/shared/widgets/custom_scrollbar/custom_scrollbar_widget.dart';
-import 'package:flutterando_web/shared/widgets/gradient_appbar/gradient_appBar.dart';
+import 'package:flutterando_web/shared/widgets/gradient_appbar/gradient_appbar.dart';
 import 'package:flutterando_web/screens/team/team_page.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
