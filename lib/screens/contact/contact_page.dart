@@ -1,7 +1,7 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
-import 'components/Contact_Container.dart';
-import 'components/Contat_Form.dart';
+import 'components/contact_container.dart';
+import 'components/contact_form.dart';
 
 class ContactPage extends StatefulWidget {
   ContactPage({Key key}) : super(key: key);
