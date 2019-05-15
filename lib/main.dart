@@ -11,6 +11,7 @@ class App extends StatelessWidget {
       title: 'Flutterando',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Color(0xFF54C7F4),
       ),
       home: StartPage(title: 'Flutter Demo Home Page'),
     );

@@ -1,14 +1,13 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/screens/about/about_page.dart';
-import 'package:flutterando_web/screens/contact/contact_page.dart';
-import 'package:flutterando_web/screens/home/home_page.dart';
 import 'package:flutterando_web/shared/widgets/custom_scrollbar/custom_scrollbar_widget.dart';
 import 'package:flutterando_web/shared/widgets/gradient_appbar/gradient_appbar.dart';
-import 'package:flutterando_web/screens/team/team_page.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
 
-import 'bottom/bottom_bar.dart';
+import 'contact/contact_page.dart';
+import 'about/about_page.dart';
+import 'team/team_page.dart';
+import 'home/home_page.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key, this.title}) : super(key: key);
@@ -44,7 +43,6 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     TabModel(title: "Sobre", contentBuilder: (context) => AboutPage()),
     TabModel(title: "Equipe", contentBuilder: (context) => TeamPage()),
     TabModel(title: "Contato", contentBuilder: (context) => ContactPage()),
-    TabModel(title: "Bottom Bar", contentBuilder: (context) => BottomBar()),
   ];
 
   @override

@@ -1,5 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
+import 'components/bottom_bar.dart';
 import 'components/contact_container.dart';
 import 'components/contact_form.dart';
 
@@ -16,27 +17,35 @@ class _ContactPageState extends State<ContactPage> {
     return Container(
       padding: const EdgeInsets.all(15),
       margin: EdgeInsets.only(top: size.width * 0.075),
-      child: Row(
+      child: Column(
         children: <Widget>[
-          Spacer(flex: 1),
           Expanded(
-            flex: 3,
-            child: AnimatedCard(
-              direction: AnimatedCardDirection.left,
-              initDelay: Duration(seconds: 0),
-              child: ContactContainer(),
+            flex: 4,
+            child: Row(
+              children: <Widget>[
+                Spacer(flex: 1),
+                Expanded(
+                  flex: 3,
+                  child: AnimatedCard(
+                    direction: AnimatedCardDirection.left,
+                    initDelay: Duration(seconds: 0),
+                    child: ContactContainer(),
+                  ),
+                ),
+                Spacer(flex: 1),
+                Expanded(
+                  flex: 6,
+                  child: AnimatedCard(
+                    direction: AnimatedCardDirection.right,
+                    initDelay: Duration(seconds: 0),
+                    child: ContactForm(),
+                  ),
+                ),
+                Spacer(flex: 1),
+              ],
             ),
           ),
-          Spacer(flex: 1),
-          Expanded(
-            flex: 6,
-            child: AnimatedCard(
-              direction: AnimatedCardDirection.right,
-              initDelay: Duration(seconds: 0),
-              child: ContactForm(),
-            ),
-          ),
-          Spacer(flex: 1),
+          Expanded(flex: 2, child: BottomBar())
         ],
       ),
     );
