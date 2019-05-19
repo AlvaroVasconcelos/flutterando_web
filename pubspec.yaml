@@ -8,14 +8,17 @@ environment:
 dependencies:
   flutter_web: any
   flutter_web_ui: any
+  animated_card: any
   rxdart: any
 
 dev_dependencies:
   build_runner: ^1.4.0
   build_web_compilers: ^2.0.0
   pedantic: ^1.0.0
+    
 
 flutter:
+  uses-material-design: true
 assets:
   - assets/images/logo.png
   - assets/images/team/alvaro.jpg
@@ -37,3 +40,8 @@ dependency_overrides:
     git:
       url: https://github.com/flutter/flutter_web
       path: packages/flutter_web_ui
+      
+  animated_card:
+    git:
+      url: https://github.com/davidsdearaujo/animated_card
+      ref: web
