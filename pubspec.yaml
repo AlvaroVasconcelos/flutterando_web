@@ -21,6 +21,15 @@ flutter:
   uses-material-design: true
 assets:
   - assets/images/logo.png
+  - assets/images/team/alvaro.jpg
+  - assets/images/team/bwolf.jpg
+  - assets/images/team/david.jpg
+  - assets/images/team/gabriel.jpg
+  - assets/images/team/jacob.jpg
+  - assets/images/team/matheus.jpg
+  - assets/images/team/rully.jpg
+  - assets/images/team/jacob_.jpg
+  - assets/images/bg-time.png
 
 dependency_overrides:
   flutter_web:

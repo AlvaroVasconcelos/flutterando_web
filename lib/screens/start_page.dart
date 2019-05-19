@@ -10,10 +10,6 @@ import 'team/team_page.dart';
 import 'home/home_page.dart';
 
 class StartPage extends StatefulWidget {
-  StartPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _StartPageState createState() => _StartPageState();
 }
