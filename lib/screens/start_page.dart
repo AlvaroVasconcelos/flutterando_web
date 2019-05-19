@@ -1,14 +1,6 @@
 import 'package:flutter_web/material.dart';
-<<<<<<< HEAD:lib/screens/StartPage.dart
-import 'package:flutterando_web/screens/about/AboutPage.dart';
-import 'package:flutterando_web/screens/contact/contact_page.dart';
-import 'package:flutterando_web/screens/home/HomePage.dart';
-import 'package:flutterando_web/shared/widgets/gradient_appbar/Gradient_AppBar.dart';
-import 'package:flutterando_web/screens/team/team_page.dart';
-=======
 import 'package:flutterando_web/shared/widgets/custom_scrollbar/custom_scrollbar_widget.dart';
 import 'package:flutterando_web/shared/widgets/gradient_appbar/gradient_appbar.dart';
->>>>>>> master:lib/screens/start_page.dart
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
 import 'package:flutterando_web/shared/widgets/vertical_tabbarview/vertical_tabbarview.dart';
 
