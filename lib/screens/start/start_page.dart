@@ -55,14 +55,16 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var childHeight = MediaQuery.of(context).size.height - 55;
     return Scaffold(
       appBar: GradientAppBar(
-          image: 'images/logo.png',
-          buttons: TabbarComponent(
-            tabs: tabs,
-            indicatorColor: Colors.white,
-            controller: _scrollController,
-          )),
+        image: 'images/logo.png',
+        buttons: TabbarComponent(
+          tabs: tabs,
+          indicatorColor: Colors.white,
+          controller: _scrollController,
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +85,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                   itemBuilder: (context, index) {
                     return SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height - 55,
+                      height: childHeight,
                       child: tabs[index].contentBuilder(context),
                     );
                   },
