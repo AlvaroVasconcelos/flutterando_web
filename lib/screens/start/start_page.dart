@@ -5,7 +5,6 @@ import 'package:flutterando_web/shared/widgets/gradient_appbar/gradient_appbar.d
 import '../home/home_page.dart';
 import '../team/team_page.dart';
 import '../about/about_page.dart';
-import '../bottom/bottom_bar.dart';
 import '../contact/contact_page.dart';
 import 'components/tabbar/tabbar_component.dart';
 import 'components/tabscroll/tabscroll_component.dart';
@@ -50,7 +49,6 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     TabModel(title: "Sobre", contentBuilder: (context) => AboutPage()),
     TabModel(title: "Equipe", contentBuilder: (context) => TeamPage()),
     TabModel(title: "Contato", contentBuilder: (context) => ContactPage()),
-    TabModel(title: "Bottom Bar", contentBuilder: (context) => BottomBar()),
   ];
 
   @override
