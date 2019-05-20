@@ -1,6 +1,6 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
-import 'screens/start_page.dart';
+import 'screens/start/start_page.dart';
 
 void main() => runApp(App());
 
