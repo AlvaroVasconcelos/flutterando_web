@@ -1,4 +1,5 @@
 import 'package:flutter_web/material.dart';
+import 'package:flutterando_web/screens/start/components/tabbar/tabbar_component.dart';
 
 class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String image;
@@ -30,12 +31,12 @@ class _GradientAppBarState extends State<GradientAppBar> {
           child: Image.asset(widget.image),
         ),
         Positioned(
-          right: width * .05,
+          right: width * 0.15,
           child: Container(
-            width: 400,
             height: 56,
-            child: widget.buttons),
-        )
+            child: widget.buttons,
+          ),
+        ),
       ],
     );
   }

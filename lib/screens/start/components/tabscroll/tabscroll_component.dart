@@ -1,6 +1,6 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/mixins/after_layout_mixin.dart';
-import 'package:flutterando_web/shared/widgets/vertical_tabbarview/tab_model.dart';
+import 'package:flutterando_web/shared/models/tab_model.dart';
 
 import 'scroll_thumb.dart';
 

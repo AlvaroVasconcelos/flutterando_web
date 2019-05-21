@@ -6,7 +6,7 @@ import 'scroll_thumb.dart';
 class CustomScrollbarWidget extends StatefulWidget {
   final Widget child;
   final double heightScrollThumb;
-  final TabController controller;
+  final ScrollController controller;
   final String customText;
 
   CustomScrollbarWidget({
@@ -24,74 +24,63 @@ class CustomScrollbarWidget extends StatefulWidget {
 class _CustomScrollbarWidgetState extends State<CustomScrollbarWidget>
     with AfterLayoutMixin {
   double barMaxScrollExtent = 0;
+  bool scrollLoaded = false;
+
   double get barMinScrollExtent => 0;
 
-  int get viewMaxScrollExtent => widget.controller.length - 1;
-  double get viewMinScrollExtent => 0;
-  double get viewScrollValue => widget.controller.animation.value;
+  double get viewMaxScrollExtent =>
+      scrollLoaded ? widget.controller.position.maxScrollExtent : 0;
 
-  double get dragPos {
-    return barMaxScrollExtent *
-        viewScrollValue /
-        viewMaxScrollExtent.toDouble();
+  double get viewMinScrollExtent =>
+      scrollLoaded ? widget.controller.position.minScrollExtent : 0;
+
+  double get viewScrollValue => scrollLoaded ? widget.controller.offset : 0;
+
+  double get dragPos =>
+      barMaxScrollExtent * viewScrollValue / viewMaxScrollExtent;
+
+  double get viewPos => dragPos * viewMaxScrollExtent / barMaxScrollExtent;
+
+  void _onVerticalDragUpdate(DragUpdateDetails details) {
+    var index =
+        details.globalPosition.dy / barMaxScrollExtent * viewMaxScrollExtent;
+    index -= widget.heightScrollThumb * 6;
+    if (index != widget.controller.offset &&
+        index <= widget.controller.position.maxScrollExtent &&
+        index >= 0) {
+      widget.controller.jumpTo(index);
+    }
   }
-
-  double get viewPos {
-    return dragPos * viewMaxScrollExtent / barMaxScrollExtent;
-  }
-
-  // void _onVerticalDragUpdate(DragUpdateDetails details) {
-  //   // print("primaryDelta: ${details.primaryDelta}");
-  //   // print("dy: ${details.globalPosition.dy}");
-  //   // print("MaxBar: ${barMaxScrollExtent}");
-
-  //   // print("index original: ${widget.controller.index}");
-  //   // print("offset original: ${widget.controller.offset}");
-
-  //   var index = (details.globalPosition.dy / barMaxScrollExtent * viewMaxScrollExtent).toInt();
-
-  //   if (index != widget.controller.index) {
-  //     widget.controller.animateTo(index);
-  //   }
-
-  //   var offset =
-  //       ((details.globalPosition.dy - widget.heightScrollThumb / 2 * 3) /
-  //               barMaxScrollExtent *
-  //               viewMaxScrollExtent) -
-  //           index;
-  //   offset = offset < -1 ? -1 : offset;
-  //   offset = offset > 1 ? 1 : offset;
-  //   widget.controller.offset = offset;
-  //   // print("offset: $offset");
-  //   // print("index: $index");
-  // }
 
   @override
   void afterLayout(Duration duration) {
     barMaxScrollExtent = context.size.height - widget.heightScrollThumb;
+    scrollLoaded = true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      widget.child,
-      GestureDetector(
-        // onVerticalDragUpdate: _onVerticalDragUpdate,
-        child: AnimatedBuilder(
-          animation: widget.controller.animation,
-          child: ScrollThumb(
-            height: widget.heightScrollThumb,
-            customText: widget.customText,
-          ),
-          builder: (context, child) {
-            return Container(
-              alignment: Alignment.topRight,
-              margin: EdgeInsets.only(top: dragPos),
-              child: child,
-            );
-          },
+    return GestureDetector(
+      onVerticalDragUpdate: _onVerticalDragUpdate,
+      child: AnimatedBuilder(
+        animation: widget.controller,
+        child: ScrollThumb(
+          height: widget.heightScrollThumb,
+          customText: widget.customText,
         ),
+        builder: (context, child) {
+          return Stack(
+            children: <Widget>[
+              widget.child,
+              Positioned(
+                right: 0,
+                top: dragPos,
+                child: child,
+              ),
+            ],
+          );
+        },
       ),
-    ]);
+    );
   }
 }
