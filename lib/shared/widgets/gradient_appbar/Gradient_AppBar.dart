@@ -2,7 +2,7 @@ import 'package:flutter_web/material.dart';
 
 class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String image;
-  final TabBar buttons;
+  final Widget buttons;
   GradientAppBar({Key key, this.image, this.buttons}) : super(key: key);
   _GradientAppBarState createState() => _GradientAppBarState();
 
