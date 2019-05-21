@@ -1,27 +1,27 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/mixins/after_layout_mixin.dart';
+import 'package:flutterando_web/shared/models/tab_model.dart';
 
 import 'scroll_thumb.dart';
 
-class CustomScrollbarWidget extends StatefulWidget {
+class TabscrollbarWidget extends StatefulWidget {
   final Widget child;
   final double heightScrollThumb;
   final ScrollController controller;
-  final String customText;
+  final List<TabModel> tabs;
 
-  CustomScrollbarWidget({
-    this.child,
-    this.controller,
+  TabscrollbarWidget({
+    @required this.tabs,
+    @required this.child,
+    @required this.controller,
     this.heightScrollThumb = 50,
-    this.customText = "",
   });
 
   @override
-  _CustomScrollbarWidgetState createState() =>
-      new _CustomScrollbarWidgetState();
+  _TabscrollbarWidgetState createState() => new _TabscrollbarWidgetState();
 }
 
-class _CustomScrollbarWidgetState extends State<CustomScrollbarWidget>
+class _TabscrollbarWidgetState extends State<TabscrollbarWidget>
     with AfterLayoutMixin {
   double barMaxScrollExtent = 0;
   bool scrollLoaded = false;
@@ -29,17 +29,22 @@ class _CustomScrollbarWidgetState extends State<CustomScrollbarWidget>
   double get barMinScrollExtent => 0;
 
   double get viewMaxScrollExtent =>
-      scrollLoaded ? widget.controller.position.maxScrollExtent : 0;
+      scrollLoaded ? widget.controller.position.maxScrollExtent : .0;
 
   double get viewMinScrollExtent =>
-      scrollLoaded ? widget.controller.position.minScrollExtent : 0;
+      scrollLoaded ? widget.controller.position.minScrollExtent : .0;
 
-  double get viewScrollValue => scrollLoaded ? widget.controller.offset : 0;
+  double get viewScrollValue => scrollLoaded ? widget.controller.offset : .0;
 
-  double get dragPos =>
-      barMaxScrollExtent * viewScrollValue / viewMaxScrollExtent;
+  double get dragPos => scrollLoaded
+      ? barMaxScrollExtent * viewScrollValue / viewMaxScrollExtent
+      : .0;
 
   double get viewPos => dragPos * viewMaxScrollExtent / barMaxScrollExtent;
+
+  double get page => scrollLoaded
+      ? viewScrollValue / viewMaxScrollExtent * (widget.tabs.length - 1)
+      : 0;
 
   void _onVerticalDragUpdate(DragUpdateDetails details) {
     var index =
@@ -64,18 +69,17 @@ class _CustomScrollbarWidgetState extends State<CustomScrollbarWidget>
       onVerticalDragUpdate: _onVerticalDragUpdate,
       child: AnimatedBuilder(
         animation: widget.controller,
-        child: ScrollThumb(
-          height: widget.heightScrollThumb,
-          customText: widget.customText,
-        ),
-        builder: (context, child) {
+        builder: (context, _) {
           return Stack(
             children: <Widget>[
               widget.child,
               Positioned(
                 right: 0,
                 top: dragPos,
-                child: child,
+                child: ScrollThumb(
+                  height: widget.heightScrollThumb,
+                  customText: widget.tabs[page.round()].title,
+                ),
               ),
             ],
           );
