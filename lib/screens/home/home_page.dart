@@ -1,5 +1,5 @@
 import 'package:flutter_web/material.dart';
-import 'package:flutterando_web/shared/widgets/Animated-Text-Kit/lib/animated_text_kit.dart';
+import 'package:flutterando_web/shared/widgets/animated_text_kit/lib/animated_text_kit.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
