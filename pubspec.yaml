@@ -29,7 +29,7 @@ assets:
   - assets/images/team/matheus.jpg
   - assets/images/team/rully.jpg
   - assets/images/team/jacob_.jpg
-  - assets/images/bg-time.png
+  - assets/images/vectorpaint.png
 
 dependency_overrides:
   flutter_web:
