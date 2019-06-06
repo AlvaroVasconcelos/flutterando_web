@@ -56,16 +56,7 @@ class _ContactPageState extends State<ContactPage> {
             children: <Widget>[
               SizedBox(height: 10),
               Expanded(
-                flex: 9,
-                child: AnimatedCard(
-                  direction: AnimatedCardDirection.left,
-                  initDelay: Duration(seconds: 0),
-                  child: ContactContainer(),
-                ),
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                flex: 12,
+                flex: 15,
                 child: AnimatedCard(
                   direction: AnimatedCardDirection.right,
                   initDelay: Duration(seconds: 0),
@@ -73,9 +64,14 @@ class _ContactPageState extends State<ContactPage> {
                 ),
               ),
               Expanded(
-                flex: 7,
-                child: BottomBar(),
-              )
+                flex: 8,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.bottom,
+                  initDelay: Duration(seconds: 0),
+                  child: BottomBar(),
+                ),
+              ),
+              SizedBox(height: 5),
             ],
           );
         }

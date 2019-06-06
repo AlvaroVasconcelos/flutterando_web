@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/cupertino.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
@@ -15,15 +16,15 @@ class _AboutPageState extends State<AboutPage> {
     AboutModel(
         title: 'test 1',
         description: 'Testando descrinção',
-        image: 'assets/icons/user.png'),
+        image: 'icons/user.png'),
     AboutModel(
         title: 'test 1',
         description: 'Testando descrinção',
-        image: 'assets/icons/user.png'),
+        image: 'icons/user.png'),
     AboutModel(
         title: 'test 1',
         description: 'Testando descrinção',
-        image: 'assets/icons/user.png'),
+        image: 'icons/user.png'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _AboutPageState extends State<AboutPage> {
           return Container(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 100),
+                SizedBox(height: 20),
                 Text(
                   'Title',
                   style: TextStyle(color: Colors.white, fontSize: 35),
@@ -79,7 +80,7 @@ class _AboutPageState extends State<AboutPage> {
                     },
                   ),
                 ),
-                SizedBox(height: 100)
+                SizedBox(height: 10)
               ],
             ),
           );
@@ -93,7 +94,7 @@ class _AboutPageState extends State<AboutPage> {
                     TextStyle(color: Colors.white, fontSize: size.width * .05),
               ),
               Container(
-                width: size.width * .3,
+                width: size.width * .4,
                 child: Text(
                   '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
                   style: TextStyle(
@@ -106,25 +107,40 @@ class _AboutPageState extends State<AboutPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Spacer(flex: 2),
-                  AboutCard(
-                    title: 'Testando Title',
-                    subTitle:
-                        'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                    image: 'icons/users.png',
+                  AnimatedCard(
+                    initDelay: Duration(seconds: 1),
+                    direction: AnimatedCardDirection.left,
+                    duration: Duration(seconds: 1),
+                    child: AboutCard(
+                      title: 'Testando Title',
+                      subTitle:
+                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                      image: 'icons/user.png',
+                    ),
                   ),
                   Spacer(flex: 1),
-                  AboutCard(
-                    title: 'Testando Title',
-                    subTitle:
-                        'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                    image: 'icons/users.png',
+                  AnimatedCard(
+                    initDelay: Duration(milliseconds: 500),
+                    direction: AnimatedCardDirection.bottom,
+                    duration: Duration(seconds: 1),
+                    child: AboutCard(
+                      title: 'Testando Title',
+                      subTitle:
+                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                      image: 'icons/user.png',
+                    ),
                   ),
                   Spacer(flex: 1),
-                  AboutCard(
-                    title: 'Testando Title',
-                    subTitle:
-                        'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                    image: 'icons/users.png',
+                  AnimatedCard(
+                    initDelay: Duration(seconds: 1),
+                    direction: AnimatedCardDirection.right,
+                    duration: Duration(seconds: 1),
+                    child: AboutCard(
+                      title: 'Testando Title',
+                      subTitle:
+                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                      image: 'icons/user.png',
+                    ),
                   ),
                   Spacer(flex: 2),
                 ],

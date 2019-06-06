@@ -134,6 +134,7 @@ class _TeamPageState extends State<TeamPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  SizedBox(height: 10),
                   Text(
                     'Nosso Time',
                     style: TextStyle(

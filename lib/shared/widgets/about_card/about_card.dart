@@ -20,35 +20,69 @@ class AboutCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(45),
       ),
       elevation: 2,
-      child: Container(
-        constraints: BoxConstraints(maxHeight: 250, maxWidth: 150),
-        alignment: Alignment.center,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 10),
-            CircleAvatar(
-              maxRadius: 60,
-              child: Image.asset(image),
+      child: LayoutBuilder(builder: (context, boxConstraints) {
+        if (boxConstraints.maxWidth >= 720) {
+          return Container(
+            constraints: BoxConstraints(maxWidth: 250),
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 10),
+                CircleAvatar(
+                  maxRadius: 60,
+                  child: Image.asset(image),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.title,
+                  softWrap: true,
+                ),
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.overline,
+                    softWrap: true,
+                  ),
+                )
+              ],
             ),
-            SizedBox(height: 10),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.title,
-              softWrap: true,
+          );
+        } else {
+          return Container(
+            constraints: BoxConstraints(maxWidth: 250, maxHeight: 300),
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 10),
+                CircleAvatar(
+                  maxRadius: 60,
+                  child: Image.asset(image),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.title,
+                  softWrap: true,
+                ),
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.overline,
+                    softWrap: true,
+                  ),
+                )
+              ],
             ),
-            SizedBox(height: 10),
-            Container(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                subTitle,
-                style: Theme.of(context).textTheme.overline,
-                softWrap: true,
-              ),
-            )
-          ],
-        ),
-      ),
+          );
+        }
+      }),
     );
   }
 }

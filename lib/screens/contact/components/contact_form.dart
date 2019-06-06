@@ -2,6 +2,7 @@ import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/widgets/contact_field/contact_field.dart';
 
 import '../contact_bloc.dart';
+import 'contact_container.dart';
 
 class ContactForm extends StatefulWidget {
   ContactForm({Key key}) : super(key: key);
@@ -166,6 +167,7 @@ class _ContactFormState extends State<ContactForm> {
                       .title
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
+                ContactContainer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -243,7 +245,7 @@ class _ContactFormState extends State<ContactForm> {
                               color: Colors.grey,
                               fontSize: size.width * 0.05,
                               fontWeight: FontWeight.bold),
-                          height: size.width * 0.25,
+                          height: size.width * 0.08,
                         ),
                       ),
                     ],
@@ -261,8 +263,8 @@ class _ContactFormState extends State<ContactForm> {
                         color: Colors.transparent,
                         child: Container(
                           color: Colors.lightBlue,
-                          height: 35,
-                          width: size.width * 0.5,
+                          height: 25,
+                          width: size.width * 0.3,
                           child: Center(
                             child: Text(
                               "Send Message",

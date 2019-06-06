@@ -10,47 +10,95 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset(
-          'images/logo-color.png',
-          fit: BoxFit.contain,
-        ),
-        SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return LayoutBuilder(builder: (context, boxConstraints) {
+      if (boxConstraints.maxWidth >= 720) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Spacer(),
-            CircularIconWidget(
-              color: Colors.black,
-              assetImage: 'social/facebook_f.png',
+            Image.asset(
+              'images/logo-color.png',
+              fit: BoxFit.contain,
             ),
-            SizedBox(width: 20),
-            CircularIconWidget(
-              color: Colors.black,
-              assetImage: 'social/medium_m.png',
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Spacer(),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/facebook_f.png',
+                ),
+                SizedBox(width: 20),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/medium_m.png',
+                ),
+                SizedBox(width: 20),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/youtube_y.png',
+                ),
+                SizedBox(width: 20),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/linkedin_in.png',
+                ),
+                SizedBox(width: 20),
+                Spacer(),
+              ],
             ),
-            SizedBox(width: 20),
-            CircularIconWidget(
-              color: Colors.black,
-              assetImage: 'social/youtube_y.png',
-            ),
-            SizedBox(width: 20),
-            CircularIconWidget(
-              color: Colors.black,
-              assetImage: 'social/linkedin_in.png',
-            ),
-            SizedBox(width: 20),
-            Spacer(),
+            SizedBox(height: 5),
+            Text(
+              '© copyright Flutterando',
+              style: TextStyle(color: Colors.black54),
+            )
           ],
-        ),
-        SizedBox(height: 5),
-        Text(
-          '© copyright Flutterando',
-          style: TextStyle(color: Colors.black54),
-        )
-      ],
-    );
+        );
+      } else {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'images/logo-color.png',
+              fit: BoxFit.contain,
+              width: boxConstraints.maxWidth * 0.15,
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Spacer(),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/facebook_f.png',
+                ),
+                SizedBox(width: 10),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/medium_m.png',
+                ),
+                SizedBox(width: 10),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/youtube_y.png',
+                ),
+                SizedBox(width: 10),
+                CircularIconWidget(
+                  color: Colors.black,
+                  assetImage: 'social/linkedin_in.png',
+                ),
+                SizedBox(width: 10),
+                Spacer(),
+              ],
+            ),
+            SizedBox(height: 5),
+            Text(
+              '© copyright Flutterando',
+              style: TextStyle(color: Colors.black26),
+            )
+          ],
+        );
+      }
+    });
   }
 }

@@ -15,26 +15,52 @@ class CircularIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return ClipOval(
-      child: Container(
-        height: size.height * 0.05,
-        decoration: BoxDecoration(
-          color: color,
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).accentColor,
-            ],
+    return LayoutBuilder(builder: (context, boxConstraints) {
+      if (boxConstraints.maxWidth >= 720) {
+        return ClipOval(
+          child: Container(
+            height: size.height * 0.05,
+            decoration: BoxDecoration(
+              color: color,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Theme.of(context).primaryColor,
+                  Theme.of(context).accentColor,
+                ],
+              ),
+            ),
+            padding: EdgeInsets.all(10),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(assetImage, fit: BoxFit.cover),
+            ),
           ),
-        ),
-        padding: EdgeInsets.all(10),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Image.asset(assetImage, fit: BoxFit.cover),
-        ),
-      ),
-    );
+        );
+      } else {
+        return ClipOval(
+          child: Container(
+            height: size.height * 0.03,
+            decoration: BoxDecoration(
+              color: color,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Theme.of(context).primaryColor,
+                  Theme.of(context).accentColor,
+                ],
+              ),
+            ),
+            padding: EdgeInsets.all(10),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(assetImage, fit: BoxFit.cover),
+            ),
+          ),
+        );
+      }
+    });
   }
 }
