@@ -50,10 +50,11 @@ class _HomePageState extends State<HomePage> {
                 TyperAnimatedTextKit(
                   isRepeatingAnimation: false,
                   duration: Duration(seconds: 3),
-                  text: [
-                    'Esse é o subtitle, testando tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho. '
-                  ],
-                  textStyle: TextStyle(color: Colors.white, fontSize: 20),
+                  text: ['Esse é o subtitle, testando tamanho tamanho '],
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
                 )
               ],
             ),

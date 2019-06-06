@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
+import 'package:flutterando_web/screens/team/team_page_item.dart';
+import 'package:flutterando_web/screens/team/team_page_transformer.dart';
 import 'package:flutterando_web/shared/model/team.dart';
-import 'package:flutterando_web/shared/widgets/team_card/team_card.dart';
 
 class TeamPage extends StatefulWidget {
   TeamPage({Key key}) : super(key: key);
@@ -64,59 +65,17 @@ class _TeamPageState extends State<TeamPage> {
   Widget build(BuildContext context) {
     _initBuild();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Stack(
       children: <Widget>[
-        Expanded(
-          flex: 3,
+        Positioned(
+          top: 0,
           child: Container(
-            color: Color.fromRGBO(255, 255, 255, 1),
-            padding: EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text(
-                  'Nosso Time',
-                  style: TextStyle(
-                      fontSize: (size.width * .05), color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 3,),
-                Text(
-                  'Uma breve descrição desse projetos de progamadores aqui :D',
-                  style: TextStyle(
-                      fontSize: (size.width * .012), color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 10,),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  direction: Axis.horizontal,
-                  spacing: 50,
-                  runSpacing: 50,
-                  children: <Widget>[
-                    TeamCard(team: team[0], size: size),
-                    TeamCard(team: team[1], size: size),
-                    TeamCard(team: team[2], size: size),
-                    TeamCard(team: team[3], size: size),
-                    TeamCard(team: team[4], size: size),
-                    TeamCard(team: team[5], size: size),
-                    TeamCard(team: team[6], size: size),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Container(
-            width: 100,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
-                alignment: Alignment.bottomCenter,
+                repeat: ImageRepeat.noRepeat,
                 image: AssetImage('images/shap-r.png'),
               ),
               gradient: LinearGradient(
@@ -127,11 +86,90 @@ class _TeamPageState extends State<TeamPage> {
                 ],
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-            ),
           ),
         ),
+        LayoutBuilder(builder: (context, boxConstraints) {
+          if (boxConstraints.maxWidth >= 720) {
+            return Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  Text(
+                    'Nosso Time',
+                    style: TextStyle(
+                        fontSize: (size.width * .04), color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: PageTransformer(
+                        pageViewBuilder: (context, visibilityResolver) {
+                      return PageView.builder(
+                        itemCount: team.length,
+                        controller: PageController(
+                          viewportFraction: 0.30,
+                          initialPage: 3,
+                        ),
+                        itemBuilder: (context, index) {
+                          final pageVisibility =
+                              visibilityResolver.resolvePageVisibility(index);
+                          return IntroPageItem(
+                            teamModel: team[index],
+                            pageVisibility: pageVisibility,
+                          );
+                        },
+                      );
+                    }),
+                  )
+                ],
+              ),
+            );
+          } else {
+            return Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'Nosso Time',
+                    style: TextStyle(
+                      fontSize: (size.width * .07),
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: PageTransformer(
+                        pageViewBuilder: (context, visibilityResolver) {
+                      return PageView.builder(
+                        itemCount: 7,
+                        controller: PageController(
+                          viewportFraction: 0.85,
+                          initialPage: 3,
+                        ),
+                        itemBuilder: (context, index) {
+                          final pageVisibility =
+                              visibilityResolver.resolvePageVisibility(index);
+                          return IntroPageItem(
+                            teamModel: team[index],
+                            pageVisibility: pageVisibility,
+                          );
+                        },
+                      );
+                    }),
+                  )
+                ],
+              ),
+            );
+          }
+        }),
       ],
     );
   }

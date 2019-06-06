@@ -27,8 +27,6 @@ class _ContactContainerState extends State<ContactContainer> {
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
-              "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
-              "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
               "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa",
               style: Theme.of(context)
                   .textTheme
@@ -47,8 +45,6 @@ class _ContactContainerState extends State<ContactContainer> {
               ),
             ),
             subtitle: Text(
-              "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
-              "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa"
               "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa",
               style:
                   TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
