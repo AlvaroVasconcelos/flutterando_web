@@ -1,7 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
 import 'components/bottom_bar.dart';
-import 'components/contact_container.dart';
 import 'components/contact_form.dart';
 
 class ContactPage extends StatefulWidget {
@@ -15,39 +14,57 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.all(15),
-      margin: EdgeInsets.only(top: size.width * 0.075),
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 4,
-            child: Row(
-              children: <Widget>[
-                Spacer(flex: 1),
-                Expanded(
-                  flex: 3,
-                  child: AnimatedCard(
-                    direction: AnimatedCardDirection.left,
-                    initDelay: Duration(seconds: 0),
-                    child: ContactContainer(),
-                  ),
+      margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 0),
+      child: LayoutBuilder(builder: (context, boxConstraints) {
+        if (boxConstraints.maxWidth < 720) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              SizedBox(height: 10),
+              Expanded(
+                flex: 15,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.right,
+                  initDelay: Duration(seconds: 0),
+                  child: ContactForm(),
                 ),
-                Spacer(flex: 1),
-                Expanded(
-                  flex: 6,
-                  child: AnimatedCard(
-                    direction: AnimatedCardDirection.right,
-                    initDelay: Duration(seconds: 0),
-                    child: ContactForm(),
-                  ),
+              ),
+              Expanded(
+                flex: 4,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.bottom,
+                  initDelay: Duration(seconds: 0),
+                  child: BottomBar(),
                 ),
-                Spacer(flex: 1),
-              ],
-            ),
-          ),
-          Expanded(flex: 2, child: BottomBar())
-        ],
-      ),
+              ),
+              SizedBox(height: 1),
+            ],
+          );
+        } else {
+          return Column(
+            children: <Widget>[
+              SizedBox(height: 5),
+              Expanded(
+                flex: 15,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.right,
+                  initDelay: Duration(seconds: 0),
+                  child: ContactForm(),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.bottom,
+                  initDelay: Duration(seconds: 0),
+                  child: BottomBar(),
+                ),
+              ),
+              SizedBox(height: 5),
+            ],
+          );
+        }
+      }),
     );
   }
 }

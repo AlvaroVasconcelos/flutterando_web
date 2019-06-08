@@ -11,32 +11,95 @@ class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _GradientAppBarState extends State<GradientAppBar> {
+  Size get size => MediaQuery.of(context).size;
+  bool isOpenDrawer = false;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    return Stack(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Color.fromRGBO(95, 95, 95, 1),
-              Color.fromRGBO(0, 85, 155, 1),
-              Color.fromRGBO(85, 200, 245, 1),
-            ]),
-          ),
-        ),
-        Positioned.fill(
-          right: width * 0.60,
-          child: Image.asset(widget.image),
-        ),
-        Positioned(
-          right: width * 0.15,
-          child: Container(
-            height: 56,
-            child: widget.buttons,
-          ),
-        ),
-      ],
+    return LayoutBuilder(
+      builder: (context, boxConstraints) {
+        if (boxConstraints.maxWidth >= 720) {
+          return Stack(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(95, 95, 95, 1),
+                    Color.fromRGBO(0, 85, 155, 1),
+                    Color.fromRGBO(85, 200, 245, 1),
+                  ]),
+                ),
+              ),
+              Positioned.fill(
+                right: size.width * 0.60,
+                child: Image.asset(widget.image),
+              ),
+              Positioned(
+                right: size.width * 0.15,
+                child: Container(
+                  height: 56,
+                  child: widget.buttons,
+                ),
+              ),
+            ],
+          );
+        } else {
+          return Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(95, 95, 95, 1),
+                    Color.fromRGBO(0, 85, 155, 1),
+                    Color.fromRGBO(85, 200, 245, 1),
+                  ]),
+                ),
+              ),
+              if (!isOpenDrawer) ...{
+                Positioned.fill(
+                  child: Image.asset(
+                    widget.image,
+                    width: size.width * 0.08,
+                  ),
+                ),
+              },
+              Positioned(
+                left: isOpenDrawer ? size.width * 0.1 : 0,
+                right: isOpenDrawer ? 0 : size.width * 0.05,
+                child: AnimatedContainer(
+                  curve: Curves.decelerate,
+                  duration: Duration(seconds: 19),
+                  height: 56,
+                  child: isOpenDrawer ? widget.buttons : null,
+                ),
+              ),
+              Positioned(
+                left: -3,
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 10),
+                  child: drawer(),
+                ),
+              )
+            ],
+          );
+        }
+      },
     );
+  }
+
+  Widget drawer() {
+    return IconButton(
+      icon: Icon(
+        isOpenDrawer ? Icons.clear : Icons.menu,
+        color: Colors.white,
+      ),
+      onPressed: openDrawer,
+    );
+  }
+
+  openDrawer() {
+    setState(() {
+      isOpenDrawer = !isOpenDrawer;
+    });
   }
 }

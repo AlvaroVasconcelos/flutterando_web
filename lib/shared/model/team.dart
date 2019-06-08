@@ -17,8 +17,8 @@ class TeamModel {
         'descricao': this._descricao
       };
 
-  String getNome() => this._nome;    
-  String getFoto() => this._foto;    
-  String getCargo() => this._cargo;    
-  String getDescricao() => this._descricao;    
+  String get getNome => this._nome;
+  String get getFoto => this._foto;
+  String get getCargo => this._cargo;
+  String get getDescricao => this._descricao;
 }

@@ -15,39 +15,74 @@ class AboutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Expanded(
-      flex: 5,
-      child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(45),
-          ),
-          elevation: 2,
-          child: Container(
-            padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(45),
+      ),
+      elevation: 2,
+      child: LayoutBuilder(builder: (context, boxConstraints) {
+        if (boxConstraints.maxWidth >= 720) {
+          return Container(
+            constraints: BoxConstraints(maxWidth: 250),
+            alignment: Alignment.center,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                SizedBox(height: 10),
                 CircleAvatar(
-                  maxRadius: 40,
-                  minRadius: 1,
+                  maxRadius: 60,
                   child: Image.asset(image),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 10),
                 Text(
                   title,
                   style: Theme.of(context).textTheme.title,
                   softWrap: true,
                 ),
-                SizedBox(height: 30),
-                Text(
-                  subTitle,
-                  style: Theme.of(context).textTheme.overline,
-                  softWrap: true,
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.overline,
+                    softWrap: true,
+                  ),
                 )
               ],
             ),
-          )),
+          );
+        } else {
+          return Container(
+            constraints: BoxConstraints(maxWidth: 250, maxHeight: 300),
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 10),
+                CircleAvatar(
+                  maxRadius: 60,
+                  child: Image.asset(image),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.title,
+                  softWrap: true,
+                ),
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.overline,
+                    softWrap: true,
+                  ),
+                )
+              ],
+            ),
+          );
+        }
+      }),
     );
   }
 }

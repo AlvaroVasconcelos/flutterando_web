@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/mixins/after_layout_mixin.dart';
 import 'package:flutterando_web/shared/models/tab_model.dart';
@@ -49,7 +50,9 @@ class _TabbarComponentState extends State<TabbarComponent>
       : 0;
 
   double get page => scrollLoaded
-      ? (widget.controller.offset / viewMaxScrollExtent * (widget.tabs.length-1))
+      ? (widget.controller.offset /
+          viewMaxScrollExtent *
+          (widget.tabs.length - 1))
       : 0;
 
   double offsetFromIndex(int index) {
@@ -106,24 +109,28 @@ class _TabbarComponentState extends State<TabbarComponent>
               itemBuilder: (context, index) {
                 var tab = widget.tabs[index];
                 bool isCurrent = page.round() == index;
-                return InkWell(
-                  onTap: () => widget.controller.animateTo(
-                        offsetFromIndex(index),
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      ),
-                  child: Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: widget.customPadding),
-                    alignment: Alignment.center,
-                    width: itemWidth,
-                    child: Text(
-                      tab.title,
-                      key: textKey[index],
-                      style: TextStyle(
-                        color: isCurrent
-                            ? widget.textColor
-                            : widget.textColor.withOpacity(0.8),
+                return AnimatedCard(
+                  direction: AnimatedCardDirection.right,
+                  duration: Duration(seconds: 1),
+                  child: InkWell(
+                    onTap: () => widget.controller.animateTo(
+                          offsetFromIndex(index),
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        ),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: widget.customPadding),
+                      alignment: Alignment.center,
+                      width: itemWidth,
+                      child: Text(
+                        tab.title,
+                        key: textKey[index],
+                        style: TextStyle(
+                          color: isCurrent
+                              ? widget.textColor
+                              : widget.textColor.withOpacity(0.8),
+                        ),
                       ),
                     ),
                   ),
