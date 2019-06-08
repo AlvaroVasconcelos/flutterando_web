@@ -36,22 +36,6 @@ class _ContactContainerState extends State<ContactContainer> {
                       .copyWith(color: Colors.grey),
                 ),
               ),
-              ContactTextTile(
-                padding: const EdgeInsets.only(bottom: 8),
-                margin: const EdgeInsets.only(top: 15, bottom: 5),
-                title: Text(
-                  "Head Office",
-                  style: TextStyle(
-                    fontSize: size.width * 0.012,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  "aaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa",
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.normal),
-                ),
-              ),
               ContactTile(
                 icon: Icon(Icons.phone),
                 text: Text(

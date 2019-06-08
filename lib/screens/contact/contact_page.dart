@@ -1,7 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter_web/material.dart';
 import 'components/bottom_bar.dart';
-import 'components/contact_container.dart';
 import 'components/contact_form.dart';
 
 class ContactPage extends StatefulWidget {
@@ -43,9 +42,8 @@ class _ContactPageState extends State<ContactPage> {
           );
         } else {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               Expanded(
                 flex: 15,
                 child: AnimatedCard(
@@ -62,7 +60,7 @@ class _ContactPageState extends State<ContactPage> {
                   child: BottomBar(),
                 ),
               ),
-              SizedBox(height: 1),
+              SizedBox(height: 5),
             ],
           );
         }

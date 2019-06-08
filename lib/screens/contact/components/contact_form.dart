@@ -48,6 +48,7 @@ class _ContactFormState extends State<ContactForm> {
                       .title
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
+                ContactContainer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
