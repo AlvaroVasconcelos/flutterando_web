@@ -13,6 +13,7 @@ class _BottomBarState extends State<BottomBar> {
     return LayoutBuilder(builder: (context, boxConstraints) {
       if (boxConstraints.maxWidth >= 720) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
@@ -56,12 +57,13 @@ class _BottomBarState extends State<BottomBar> {
         );
       } else {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Image.asset(
               'images/logo-color.png',
               fit: BoxFit.contain,
-              width: boxConstraints.maxWidth * 0.15,
+              width: boxConstraints.maxHeight * 0.6,
             ),
             SizedBox(height: 10),
             Row(

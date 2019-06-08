@@ -37,7 +37,7 @@ class IntroPageItem extends StatelessWidget {
     var categoryText = _applyTextEffects(
       translationFactor: 300.0,
       child: Text(
-        teamModel.getCargo(),
+        teamModel.getCargo,
         style: textTheme.caption.copyWith(
           color: Colors.white70,
           fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class IntroPageItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 16.0),
         child: Text(
-          teamModel.getDescricao(),
+          teamModel.getDescricao,
           style: textTheme.title
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
@@ -78,7 +78,7 @@ class IntroPageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var image = Image.asset(
-      teamModel.getFoto(),
+      teamModel.getFoto,
       fit: BoxFit.cover,
       alignment: FractionalOffset(
         0.5 + (pageVisibility.pagePosition / 3),

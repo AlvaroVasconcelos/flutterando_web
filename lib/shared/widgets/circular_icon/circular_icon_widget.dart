@@ -41,7 +41,7 @@ class CircularIconWidget extends StatelessWidget {
       } else {
         return ClipOval(
           child: Container(
-            height: size.height * 0.03,
+            height: size.height * 0.01,
             decoration: BoxDecoration(
               color: color,
               gradient: LinearGradient(

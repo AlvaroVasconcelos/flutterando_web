@@ -23,8 +23,7 @@ class TeamCard extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: ExactAssetImage(team?.getFoto()))),
+                      fit: BoxFit.fill, image: ExactAssetImage(team?.getFoto))),
             ),
             SizedBox(
               height: 5,
@@ -32,7 +31,7 @@ class TeamCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Text(
-                team?.getNome(),
+                team?.getNome,
                 overflow: TextOverflow.clip,
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -47,7 +46,7 @@ class TeamCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Text(
-                team.getCargo(),
+                team.getCargo,
                 style: TextStyle(color: Color.fromRGBO(94, 94, 95, 1)),
               ),
             )

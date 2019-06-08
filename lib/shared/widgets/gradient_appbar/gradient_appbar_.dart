@@ -12,7 +12,6 @@ class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _GradientAppBarState extends State<GradientAppBar> {
   Size get size => MediaQuery.of(context).size;
-
   bool isOpenDrawer = false;
   @override
   Widget build(BuildContext context) {
@@ -45,6 +44,7 @@ class _GradientAppBarState extends State<GradientAppBar> {
           );
         } else {
           return Stack(
+            fit: StackFit.expand,
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
@@ -64,7 +64,8 @@ class _GradientAppBarState extends State<GradientAppBar> {
                 ),
               },
               Positioned(
-                right: size.width * 0.2,
+                left: isOpenDrawer ? size.width * 0.1 : 0,
+                right: isOpenDrawer ? 0 : size.width * 0.05,
                 child: AnimatedContainer(
                   curve: Curves.decelerate,
                   duration: Duration(seconds: 19),
@@ -73,7 +74,7 @@ class _GradientAppBarState extends State<GradientAppBar> {
                 ),
               ),
               Positioned(
-                left: 5,
+                left: -3,
                 child: AnimatedContainer(
                   duration: Duration(seconds: 10),
                   child: drawer(),
@@ -90,7 +91,6 @@ class _GradientAppBarState extends State<GradientAppBar> {
     return IconButton(
       icon: Icon(
         isOpenDrawer ? Icons.clear : Icons.menu,
-        size: size.width * 0.1,
         color: Colors.white,
       ),
       onPressed: openDrawer,

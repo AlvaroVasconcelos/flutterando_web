@@ -15,44 +15,11 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 0),
       child: LayoutBuilder(builder: (context, boxConstraints) {
-        if (boxConstraints.maxWidth >= 720) {
-          return Stack(
-            alignment: Alignment.bottomCenter,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Spacer(flex: 1),
-                  Expanded(
-                    flex: 3,
-                    child: AnimatedCard(
-                      direction: AnimatedCardDirection.left,
-                      initDelay: Duration(seconds: 0),
-                      child: ContactContainer(),
-                    ),
-                  ),
-                  Spacer(flex: 1),
-                  Expanded(
-                    flex: 6,
-                    child: AnimatedCard(
-                      direction: AnimatedCardDirection.right,
-                      initDelay: Duration(seconds: 0),
-                      child: ContactForm(),
-                    ),
-                  ),
-                  Spacer(flex: 1),
-                ],
-              ),
-              Positioned(
-                bottom: 5,
-                width: 250,
-                child: BottomBar(),
-              )
-            ],
-          );
-        } else {
+        if (boxConstraints.maxWidth < 720) {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               SizedBox(height: 10),
               Expanded(
@@ -64,14 +31,38 @@ class _ContactPageState extends State<ContactPage> {
                 ),
               ),
               Expanded(
-                flex: 8,
+                flex: 4,
                 child: AnimatedCard(
                   direction: AnimatedCardDirection.bottom,
                   initDelay: Duration(seconds: 0),
                   child: BottomBar(),
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 1),
+            ],
+          );
+        } else {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              SizedBox(height: 10),
+              Expanded(
+                flex: 15,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.right,
+                  initDelay: Duration(seconds: 0),
+                  child: ContactForm(),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: AnimatedCard(
+                  direction: AnimatedCardDirection.bottom,
+                  initDelay: Duration(seconds: 0),
+                  child: BottomBar(),
+                ),
+              ),
+              SizedBox(height: 1),
             ],
           );
         }

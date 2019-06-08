@@ -15,7 +15,7 @@ class _ContactContainerState extends State<ContactContainer> {
     final Size size = MediaQuery.of(context).size;
 
     return LayoutBuilder(builder: (context, boxConstraints) {
-      if (boxConstraints.maxWidth >= 680) {
+      if (boxConstraints.maxWidth >= 720) {
         return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
