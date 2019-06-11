@@ -17,6 +17,7 @@ class _ContactContainerState extends State<ContactContainer> {
     return LayoutBuilder(builder: (context, boxConstraints) {
       if (boxConstraints.maxWidth >= 720) {
         return Container(
+          color: Colors.transparent,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -59,6 +60,7 @@ class _ContactContainerState extends State<ContactContainer> {
         );
       } else {
         return Container(
+          color: Colors.transparent,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

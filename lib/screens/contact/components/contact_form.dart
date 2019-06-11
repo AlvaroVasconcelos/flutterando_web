@@ -1,6 +1,5 @@
 import 'package:flutter_web/material.dart';
 import 'package:flutterando_web/shared/widgets/contact_field/contact_field.dart';
-
 import '../contact_bloc.dart';
 import 'contact_container.dart';
 

@@ -17,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'images/logo-color.png',
+              'images/logo-color-label-color.png',
               fit: BoxFit.contain,
               width: boxConstraints.maxHeight * 0.6,
             ),

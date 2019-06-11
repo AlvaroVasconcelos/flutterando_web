@@ -1,4 +1,3 @@
-
 import 'package:flutter_web/material.dart';
 
 class ContactTextTile extends StatelessWidget {
@@ -20,7 +19,7 @@ class ContactTextTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      color: color ?? Colors.white,
+      color: color ?? Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

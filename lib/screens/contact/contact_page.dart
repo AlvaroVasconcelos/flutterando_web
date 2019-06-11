@@ -12,7 +12,6 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 0),
       child: LayoutBuilder(builder: (context, boxConstraints) {

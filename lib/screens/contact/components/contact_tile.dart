@@ -1,4 +1,3 @@
-
 import 'package:flutter_web/material.dart';
 
 class ContactTile extends StatelessWidget {
@@ -11,7 +10,7 @@ class ContactTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color ?? Colors.white,
+      color: color ?? Colors.transparent,
       height: 35,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
