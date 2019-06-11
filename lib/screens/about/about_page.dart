@@ -26,129 +26,145 @@ class _AboutPageState extends State<AboutPage> {
         description: 'Testando descrinção',
         image: 'icons/user.png'),
   ];
+  Size get size => MediaQuery.of(context).size;
+
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          alignment: Alignment.bottomCenter,
-          image: AssetImage('images/shap.png'),
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage('images/team2.jpg'),
+            ),
+          ),
         ),
-        gradient: LinearGradient(colors: [
-          Color.fromRGBO(95, 95, 95, 1),
-          Color.fromRGBO(0, 85, 155, 1),
-          Color.fromRGBO(85, 200, 245, 1),
-        ]),
-      ),
-      child: LayoutBuilder(builder: (context, boxConstraints) {
-        if (boxConstraints.maxWidth < 720) {
-          return Container(
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 20),
-                Text(
-                  'Title',
-                  style: TextStyle(color: Colors.white, fontSize: 35),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  width: size.width * .5,
-                  child: Text(
-                    '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: PageView.builder(
-                    controller: PageController(
-                      viewportFraction: 0.85,
-                      initialPage: 1,
-                      keepPage: true,
-                    ),
-                    itemCount: aboutModel.length,
-                    itemBuilder: (context, index) {
-                      return AboutCard(
-                        title: aboutModel[index].title,
-                        subTitle: aboutModel[index].description,
-                        image: aboutModel[index].image,
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: 10)
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              alignment: Alignment.bottomCenter,
+              image: AssetImage('images/shap.png'),
+            ),
+            gradient: LinearGradient(
+              colors: [
+                Color.fromRGBO(95, 95, 95, 0.8),
+                Color.fromRGBO(0, 85, 155, 0.8),
+                Color.fromRGBO(85, 200, 245, 0.8),
               ],
             ),
-          );
-        } else {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                'Title',
-                style:
-                    TextStyle(color: Colors.white, fontSize: size.width * .05),
-              ),
-              Container(
-                width: size.width * .4,
-                child: Text(
-                  '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: size.width * .01,
-                  ),
+          ),
+          child: LayoutBuilder(builder: (context, boxConstraints) {
+            if (boxConstraints.maxWidth < 720) {
+              return Container(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20),
+                    Text(
+                      'Title',
+                      style: TextStyle(color: Colors.white, fontSize: 35),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      width: size.width * .5,
+                      child: Text(
+                        '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: PageView.builder(
+                        controller: PageController(
+                          viewportFraction: 0.85,
+                          initialPage: 1,
+                          keepPage: true,
+                        ),
+                        itemCount: aboutModel.length,
+                        itemBuilder: (context, index) {
+                          return AboutCard(
+                            title: aboutModel[index].title,
+                            subTitle: aboutModel[index].description,
+                            image: aboutModel[index].image,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 10)
+                  ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              );
+            } else {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Spacer(flex: 2),
-                  AnimatedCard(
-                    initDelay: Duration(seconds: 1),
-                    direction: AnimatedCardDirection.left,
-                    duration: Duration(seconds: 1),
-                    child: AboutCard(
-                      title: 'Testando Title',
-                      subTitle:
-                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                      image: 'icons/user.png',
+                  Text(
+                    'Title',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: size.width * .05),
+                  ),
+                  Container(
+                    width: size.width * .4,
+                    child: Text(
+                      '''SubTitle a,sdnasdkjnaskdjnaskdjnasldadk asdas das d sadmas dasmd saldasdasd adasd sad sakdj sakjds akdjs adjas dlsakdas md sadmasdasldasjdlakwqwea lsd sads ad sa ''',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * .01,
+                      ),
                     ),
                   ),
-                  Spacer(flex: 1),
-                  AnimatedCard(
-                    initDelay: Duration(milliseconds: 500),
-                    direction: AnimatedCardDirection.bottom,
-                    duration: Duration(seconds: 1),
-                    child: AboutCard(
-                      title: 'Testando Title',
-                      subTitle:
-                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                      image: 'icons/user.png',
-                    ),
-                  ),
-                  Spacer(flex: 1),
-                  AnimatedCard(
-                    initDelay: Duration(seconds: 1),
-                    direction: AnimatedCardDirection.right,
-                    duration: Duration(seconds: 1),
-                    child: AboutCard(
-                      title: 'Testando Title',
-                      subTitle:
-                          'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
-                      image: 'icons/user.png',
-                    ),
-                  ),
-                  Spacer(flex: 2),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Spacer(flex: 2),
+                      AnimatedCard(
+                        initDelay: Duration(seconds: 1),
+                        direction: AnimatedCardDirection.left,
+                        duration: Duration(seconds: 1),
+                        child: AboutCard(
+                          title: 'Testando Title',
+                          subTitle:
+                              'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                          image: 'icons/user.png',
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      AnimatedCard(
+                        initDelay: Duration(milliseconds: 500),
+                        direction: AnimatedCardDirection.bottom,
+                        duration: Duration(seconds: 1),
+                        child: AboutCard(
+                          title: 'Testando Title',
+                          subTitle:
+                              'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                          image: 'icons/user.png',
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      AnimatedCard(
+                        initDelay: Duration(seconds: 1),
+                        direction: AnimatedCardDirection.right,
+                        duration: Duration(seconds: 1),
+                        child: AboutCard(
+                          title: 'Testando Title',
+                          subTitle:
+                              'ALSKMD ALKSMDALK SDMALS DMAL SKD MAS LKDMA L SDKMA SLKD MASLKDMASL KDMASLKDMAL SDMALSKD MALSDM AS LDMASLKDMASLKDMAS LDKMSALDKAM SLD KASMD',
+                          image: 'icons/user.png',
+                        ),
+                      ),
+                      Spacer(flex: 2),
+                    ],
+                  )
                 ],
-              )
-            ],
-          );
-        }
-      }),
+              );
+            }
+          }),
+        ),
+      ],
     );
   }
 }
