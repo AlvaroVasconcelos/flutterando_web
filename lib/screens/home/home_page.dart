@@ -1,4 +1,5 @@
 import 'package:flutter_web/material.dart';
+import 'package:flutter_web/widgets.dart';
 import 'package:flutterando_web/shared/widgets/animated_text_kit/rotate.dart';
 import 'package:flutterando_web/shared/widgets/animated_text_kit/typer.dart';
 
@@ -12,76 +13,179 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          alignment: Alignment.bottomCenter,
-          fit: BoxFit.contain,
-          image: AssetImage('images/shape-bg.png'),
-        ),
-        gradient: LinearGradient(colors: [
-          Color.fromRGBO(95, 95, 95, 1),
-          Color.fromRGBO(0, 85, 155, 1),
-          Color.fromRGBO(85, 200, 245, 1),
-        ], begin: Alignment.topLeft),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            width: size.width * 0.5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Title: ',
-                      style: TextStyle(color: Colors.white, fontSize: 50),
-                    ),
-                    RotateAnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      text: ['Esse', 'é', 'o', 'Title'],
-                      textStyle: TextStyle(color: Colors.white, fontSize: 50),
-                    ),
-                  ],
+    return LayoutBuilder(builder: (context, boxConstraints) {
+      if (boxConstraints.maxWidth >= 720) {
+        return Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(95, 95, 95, 0.8),
+                    Color.fromRGBO(0, 85, 155, 0.8),
+                    Color.fromRGBO(85, 200, 245, 0.8),
+                  ], begin: Alignment.topLeft),
                 ),
-                TyperAnimatedTextKit(
-                  isRepeatingAnimation: false,
-                  duration: Duration(seconds: 3),
-                  text: [
-                    'Esse é o subtitle, testando tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho tamanho. '
-                  ],
-                  textStyle: TextStyle(color: Colors.white, fontSize: 20),
-                )
-              ],
+              ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('images/team.jpg'),
+                ),
+              ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  width: size.width * 0.2,
-                  child: Stack(
-                    alignment: Alignment.center,
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.contain,
+                  image: AssetImage('images/shape-bg.png'),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: size.width * 0.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Title: ',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 50),
+                            ),
+                            RotateAnimatedTextKit(
+                              isRepeatingAnimation: false,
+                              text: ['Esse', 'é', 'o', 'Title'],
+                              textStyle:
+                                  TextStyle(color: Colors.white, fontSize: 50),
+                            ),
+                          ],
+                        ),
+                        TyperAnimatedTextKit(
+                          isRepeatingAnimation: false,
+                          duration: Duration(seconds: 3),
+                          text: [
+                            'Esse é o subtitle, testando tamanho tamanho '
+                          ],
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset(
-                        'images/logo-color.png',
-                        fit: BoxFit.contain,
-                        width: size.width * 0.1,
-                      ),
-                      Image.asset(
-                        'images/iphone-x-frame.png',
-                        fit: BoxFit.contain,
-                        width: size.width * 0.2,
-                      ),
+                      Container(
+                          width: size.width * 0.2,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                'images/logo-color.png',
+                                fit: BoxFit.contain,
+                                width: size.width * 0.1,
+                              ),
+                              Image.asset(
+                                'images/iphone-x-frame.png',
+                                fit: BoxFit.contain,
+                                width: size.width * 0.2,
+                              ),
+                            ],
+                          ))
                     ],
-                  ))
-            ],
-          ),
-        ],
-      ),
-    );
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      } else {
+        return Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(95, 95, 95, 0.8),
+                    Color.fromRGBO(0, 85, 155, 0.8),
+                    Color.fromRGBO(85, 200, 245, 0.8),
+                  ], begin: Alignment.topLeft),
+                ),
+              ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('images/team.jpg'),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                image: DecorationImage(
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.contain,
+                  image: AssetImage('images/shape-bg.png'),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: size.width * 0.8,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          'images/logo-color.png',
+                          fit: BoxFit.contain,
+                          width: size.width * 0.4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Title: ',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 50),
+                            ),
+                            RotateAnimatedTextKit(
+                              isRepeatingAnimation: false,
+                              text: ['Esse', 'é', 'o', 'Title'],
+                              textStyle:
+                                  TextStyle(color: Colors.white, fontSize: 50),
+                            ),
+                          ],
+                        ),
+                        TyperAnimatedTextKit(
+                          isRepeatingAnimation: false,
+                          duration: Duration(seconds: 3),
+                          text: [
+                            'Esse é o subtitle, testando tamanho tamanho '
+                          ],
+                          textStyle:
+                              TextStyle(color: Colors.white, fontSize: 24),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      }
+    });
   }
 }
